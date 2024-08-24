@@ -2,28 +2,131 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.design {
+  background: linear-gradient(hsl(var(--nextui-secondary-400)), hsl(var(--nextui-secondary-950)));
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.design-1 {
+  fill: url(#design-1);
+}
+
+.design-1-s {
+  stop-color: hsl(var(--nextui-primary-400));
+}
+
+.design-1-e {
+  stop-color: hsl(var(--nextui-primary-100));
+}
+
+.design-2 {
+  fill: url(#design-2);
+}
+
+.design-2-s {
+  stop-color: hsl(var(--nextui-primary-600));
+}
+
+.design-2-e {
+  stop-color: hsl(var(--nextui-primary-300));
+}
+
+.design-3 {
+  fill: url(#design-3);
+}
+
+.design-3-s {
+  stop-color: hsl(var(--nextui-primary-800));
+}
+
+.design-3-e {
+  stop-color: hsl(var(--nextui-primary-500));
+}
+
+.design-4 {
+  fill: url(#design-4);
+}
+
+.design-4-s {
+  stop-color: hsl(var(--nextui-primary-900));
+}
+
+.design-4-e {
+  stop-color: hsl(var(--nextui-primary-700));
+}
+
+.glow-right {
+  filter: drop-shadow(25px 0 25px rgb(0 0 0 / 0.15)) ;
+}
+
+.glow-left {
+  filter: drop-shadow(-25px 0 25px rgb(0 0 0 / 0.15)) ;
+}
+
+.floating {
+  animation-name: floating;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0rem); }
+  25% { transform: translateY(1.5rem); }
+  50% { transform: translateY(0rem); }
+  75% { transform: translateY(-1.5rem); }
+  100% { transform: translateY(0rem); }
+}
+
+@layer base {
+  h1 {
+    @apply text-5xl;
+    @apply sm:text-6xl;
+    @apply md:text-7xl;
+    @apply lg:text-8xl;
+    @apply xl:text-9xl;
+    @apply font-title;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  h2 {
+    @apply text-4xl;
+    @apply sm:text-5xl;
+    @apply md:text-6xl;
+    @apply lg:text-7xl;
+    @apply xl:text-8xl;
+    @apply font-title;
+  }
+
+  h3 {
+    @apply text-3xl;
+    @apply sm:text-4xl;
+    @apply md:text-5xl;
+    @apply lg:text-6xl;
+    @apply font-heading;
+  }
+
+  h4 {
+    @apply text-2xl;
+    @apply sm:text-3xl;
+    @apply md:text-4xl;
+    @apply lg:text-5xl;
+    @apply font-heading;
+  }
+
+  h5 {
+    @apply text-xl;
+    @apply sm:text-2xl;
+    @apply md:text-3xl;
+    @apply lg:text-4xl;
+    @apply font-heading;
+  }
+
+  h6 {
+    @apply font-body;
+    @apply text-lg;
+    @apply font-bold;
+  }
 }
 
 @layer utilities {
