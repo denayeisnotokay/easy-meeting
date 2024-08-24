@@ -1,32 +1,40 @@
 'use client'
 
 import {
-    Button, Dropdown, DropdownItem, DropdownMenu,
+    Button,
+    Link,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
     DropdownTrigger,
     Navbar,
     NavbarBrand,
     NavbarContent,
-    NavbarItem, NavbarMenu, NavbarMenuItem,
+    NavbarItem,
+    NavbarMenu,
+    NavbarMenuItem,
     NavbarMenuToggle
 } from '@nextui-org/react'
-import Link from "next/link";
 import {useState} from "react";
 import { usePathname } from "next/navigation";
-import { IoIosArrowDown } from "react-icons/io";
+import {IoIosArrowDown, IoMdPerson} from "react-icons/io";
 
 export default function Navbarr() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const pathname = usePathname();
 
-    const loggedIn = false;
+    const loggedIn = true;
 
     return <Navbar isBlurred={false} isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}  maxWidth="full" classNames={{
-        base: ['fixed', 'bg-transparent', 'font-heading']
+        base: ['fixed', 'bg-transparent', 'font-heading'],
+        menu: ['fixed', 'inset-0', 'pt-16', 'px-0', 'gap-0'],
+        menuItem: ['transition-colors', 'hover:bg-default-800', 'px-6', 'py-2'],
     }}>
         <NavbarContent>
             <NavbarMenuToggle
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                className="sm:hidden text-primary"
+                className="sm:hidden"
             />
             <NavbarBrand>
                 <a href="/" className="h-full grow relative font-title text-3xl">EasyMeet</a>
@@ -34,29 +42,35 @@ export default function Navbarr() {
         </NavbarContent>
         <NavbarContent justify="end">
             <NavbarItem className="hidden sm:flex" isActive={pathname === "/"}>
-                <Link color="primary" href="/" aria-current="page">
+                <Link href="/" className="text-default-foreground">
                     Home
                 </Link>
             </NavbarItem>
             <NavbarItem className="hidden sm:flex" isActive={pathname === "/create"}>
-                <Link color="primary" href="/create">
+                <Link href="/create" className="text-default-foreground">
                     Create Meeting
                 </Link>
             </NavbarItem>
             { loggedIn ? <>
                 <NavbarItem className="hidden sm:flex" isActive={pathname === "/availability"}>
-                    <Link color="primary" href="/availability">
+                    <Link href="/availability" className="text-default-foreground">
                         My Availability
                     </Link>
                 </NavbarItem>
-                <Dropdown className={'bg-sky-800'}>
-                    <NavbarItem className={'grow flex justify-end hover:bg-transparent'}>
+                <NavbarItem className="hidden sm:flex" isActive={pathname === "/meetings"}>
+                    <Link href="/meetings" className="text-default-foreground">
+                        My Meetings
+                    </Link>
+                </NavbarItem>
+                <Dropdown onOpenChange={setIsDropdownOpen}>
+                    <NavbarItem className={'flex justify-end hover:bg-transparent'}>
                         <DropdownTrigger>
                             <Button
                                 color="sky"
                                 disableRipple
-                                className="bg-transparent !inline-flex !flex-row underline h-full"
-                                endContent={<IoIosArrowDown />}
+                                className="bg-transparent !inline-flex !flex-row h-full text-md"
+                                startContent={<IoMdPerson />}
+                                endContent={<IoIosArrowDown className={'transition-transform' + (isDropdownOpen ? ' rotate-180' : '')} />}
                                 radius="sm"
                                 variant="light"
                             >
@@ -65,34 +79,31 @@ export default function Navbarr() {
                         </DropdownTrigger>
                     </NavbarItem>
                     <DropdownMenu
+                        color="default"
                         aria-label="Account Options"
-                        itemClasses={{
-                            base: 'data-[hover=true]:bg-sky-700'
-                        }}
                     >
                         <DropdownItem key="settings" href={'/settings'}>Account Settings</DropdownItem>
-                        <DropdownItem key="inbox" href={'/inbox'}>Purchase History</DropdownItem>
-                        <DropdownItem key="logout" onClick={() => {}} className={'text-danger'}>Log Out</DropdownItem>
+                        <DropdownItem key="inbox" href={'/inbox'}>Inbox</DropdownItem>
+                        <DropdownItem color="danger" key="logout" onClick={() => {}} className={'text-danger'}>Log Out</DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
             </> : <>
-                <NavbarItem className="flex" isActive={pathname === "/login"}>
+                <NavbarItem className="hidden sm:flex" isActive={pathname === "/login"}>
                     <Button as={Link} variant="light" color="primary" href="/login" className="text-md">
                         Log In
                     </Button>
                 </NavbarItem>
-                <NavbarItem className="flex" isActive={pathname === "/signup"}>
+                <NavbarItem className="hidden sm:flex" isActive={pathname === "/signup"}>
                     <Button as={Link} color="primary" href="/signup" className="text-md">
                         Create Account
                     </Button>
                 </NavbarItem>
             </> }
         </NavbarContent>
-        <NavbarMenu>
+        <NavbarMenu motionProps={{animate: { height: isMenuOpen ? '100vh' : '0' }}}>
             <NavbarMenuItem isActive={pathname === "/"}>
                 <Link
-                    color="primary"
-                    className="w-full"
+                    className="w-full text-default-foreground"
                     href="/"
                 >
                     Home
@@ -100,8 +111,7 @@ export default function Navbarr() {
             </NavbarMenuItem>
             <NavbarMenuItem isActive={pathname === "/create"}>
                 <Link
-                    color="primary"
-                    className="w-full"
+                    className="w-full text-default-foreground"
                     href="/create"
                 >
                     Create Meeting
@@ -110,8 +120,7 @@ export default function Navbarr() {
             { loggedIn ? <>
                 <NavbarMenuItem isActive={pathname === "/settings"}>
                     <Link
-                        color="primary"
-                        className="w-full"
+                        className="w-full text-default-foreground"
                         href="/settings"
                     >
                         Account Settings
@@ -119,26 +128,25 @@ export default function Navbarr() {
                 </NavbarMenuItem>
                 <NavbarMenuItem isActive={pathname === "/inbox"}>
                     <Link
-                        color="primary"
-                        className="w-full"
+                        className="w-full text-default-foreground"
                         href="/inbox"
                     >
                         Inbox
                     </Link>
                 </NavbarMenuItem>
                 <NavbarMenuItem>
-                    <Button
-                        color="primary"
+                    <Link
+                        color="danger"
                         className="w-full"
                         onClick={() => {}}
                     >
                         Log Out
-                    </Button>
+                    </Link>
                 </NavbarMenuItem>
             </> : <>
                 <NavbarMenuItem isActive={pathname === "/login"}>
                     <Link
-                        color="primary"
+                        color="secondary"
                         className="w-full"
                         href="/login"
                     >

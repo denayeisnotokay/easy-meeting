@@ -37,13 +37,13 @@ export default function Home() {
             <main className="bg-default-950 flex flex-col items-center">
                 <Scene
                     duration={1200}
-                    pin={{pushFollowers: true}}
+                    pin={{pushFollowers: false}}
                     triggerHook={0}
                     offset={1}
                 >
                     {
                         (progress) => (
-                            <div className="flex flex-col justify-center w-full h-screen overflow-clip relative">
+                            <div className="spacer flex flex-col justify-center w-full h-screen overflow-clip relative">
                                 <span className="px-16 md:px-24 lg:px-48 z-10">
                                     <h1>The Easiest Way to Schedule Group Meetings</h1>
                                 </span>
@@ -59,7 +59,7 @@ export default function Home() {
                                     <IoMdArrowDown size={20} className="animate-bounce" />
                                 </button>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="450 200 1900 1100"
-                                     className="absolute inset-0 w-[1920px] h-[1080px] design">
+                                     className="absolute -inset-full w-[1920px] h-[1080px] m-auto design self-center">
                                     <defs>
                                         <linearGradient x1="0" y1="0" x2="0%" y2="100%" id="design-1">
                                             <stop offset="0%" className="design-1-s"/>
@@ -118,8 +118,14 @@ export default function Home() {
                         )
                     }
                 </Scene>
-                <Element name="content">
-
+                <Element name="content" className="w-full p-4 pt-20 max-w-screen-xl flex flex-col gap-4 mt-[-1200px]">
+                    <h2>Welcome!</h2>
+                    <h3>Its gonna say stuff here.</h3>
+                    <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Eros aliquet eros ligula fusce adipiscing mauris fames dis. Luctus rutrum aliquam nam neque, nulla rutrum sapien tristique. Fermentum quisque viverra aliquam volutpat pretium consectetur. Tellus primis facilisis ultricies laoreet himenaeos. Suscipit congue nec dignissim per dictum. Dictum sed molestie senectus convallis eu molestie. Imperdiet aliquam orci posuere dapibus phasellus; sed est justo pretium. Turpis enim torquent aenean massa vehicula litora finibus erat convallis. Consectetur semper ex facilisi maecenas nostra posuere.</p>
+                    <p>Vulputate lacus purus dignissim ipsum fringilla. Felis vulputate finibus ligula nunc suscipit et velit nisi. Scelerisque fusce eros quisque elementum tellus libero. Scelerisque duis bibendum ullamcorper nunc cubilia litora at sodales. Facilisis lobortis justo class pretium arcu magnis. Est ridiculus convallis, vitae donec mi sit nibh justo metus. Elementum senectus cras aliquam mauris proin imperdiet.</p>
+                    <p>Proin pharetra orci fusce parturient vulputate, nullam magnis praesent. Nunc turpis elementum proin; facilisi ultricies hendrerit nisi montes. Himenaeos inceptos montes metus fusce ac tellus nullam sagittis. Nibh hendrerit enim lorem neque est donec posuere primis duis. Eget massa semper imperdiet aliquam tincidunt. Felis imperdiet sodales hac ipsum mus magnis platea vestibulum. Nostra magnis porttitor iaculis fringilla dui mattis neque gravida ac.</p>
+                    <p>Non vehicula consectetur rutrum convallis; vehicula eu? Primis auctor ligula volutpat viverra netus. Donec enim litora eros nascetur donec himenaeos facilisis nisl eleifend. Dolor tellus amet etiam; fermentum habitasse taciti. Augue nascetur fusce netus urna tincidunt ad non curae sociosqu. Sapien mauris bibendum dapibus turpis varius odio senectus egestas. Ultrices turpis blandit dolor vel litora.</p>
+                    <p>Class finibus dis maximus congue; posuere fames luctus. Elementum dignissim adipiscing eget; curabitur posuere eget. Habitasse mauris hendrerit elit; dapibus mi tempus. Interdum id urna enim ipsum mus dui. Quam nibh sed dolor elit lobortis tellus non. Congue diam sagittis nisl dapibus scelerisque curae lobortis. Ante venenatis dui pulvinar senectus diam consequat mauris rhoncus. Fringilla dignissim condimentum nibh; molestie suscipit tempor augue.</p>
                 </Element>
             </main>
         </Controller>
