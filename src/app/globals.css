@@ -133,4 +133,8 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .bordered td:not(:first-child) {
+    @apply border;
+  }
 }
