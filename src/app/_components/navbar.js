@@ -24,7 +24,7 @@ export default function Navbarr() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const pathname = usePathname();
 
-    const loggedIn = true;
+    const loggedIn = false;
 
     return <Navbar isBlurred={false} isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}  maxWidth="full" classNames={{
         base: ['fixed', 'bg-transparent', 'font-heading'],
