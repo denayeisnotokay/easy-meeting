@@ -2,8 +2,7 @@ import Calendarr from '@/app/_components/calendar';
 import { CalendarDate, Time } from '@internationalized/date';
 
 export default function Page({ params }) {
-    return <main className="bg-default-950 flex flex-col justify-center items-center min-h-screen pt-20">
-        <p>Meeting: {params.meeting}</p>
+    return <main className="bg-default-950 flex flex-col justify-center items-center min-h-screen py-20">
         <Calendarr dates={{
             start: new CalendarDate(2024, 8, 26).toString(),
             end: new CalendarDate(2024, 9, 1).toString()

@@ -15,7 +15,7 @@ import {
     NavbarMenuItem,
     NavbarMenuToggle
 } from '@nextui-org/react'
-import {useState} from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import {IoIosArrowDown, IoMdPerson} from "react-icons/io";
 
@@ -37,7 +37,7 @@ export default function Navbarr() {
                 className="sm:hidden"
             />
             <NavbarBrand>
-                <a href="/" className="h-full grow relative font-title text-3xl">EasyMeet</a>
+                <a href="/" className="h-full relative font-title text-3xl">EasyMeet</a>
             </NavbarBrand>
         </NavbarContent>
         <NavbarContent justify="end">
