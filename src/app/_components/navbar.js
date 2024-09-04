@@ -37,7 +37,7 @@ export default function Navbarr() {
                 className="sm:hidden"
             />
             <NavbarBrand>
-                <a href="/" className="h-full grow relative font-title text-3xl">EasyMeet</a>
+                <a href="/" className="h-full grow relative font-title text-3xl">HuddleHub</a>
             </NavbarBrand>
         </NavbarContent>
         <NavbarContent justify="end">

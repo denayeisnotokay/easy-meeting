@@ -3,7 +3,8 @@
 import { Controller, Scene } from "react-scrollmagic-r18";
 import { Element, scroller } from "react-scroll";
 import { useEffect } from "react";
-import { IoMdArrowDown } from "react-icons/io";
+import {IoMdArrowDown, IoMdCalendar, IoMdGlobe, IoMdLink, IoMdPerson, IoMdRocket, IoMdTime} from "react-icons/io";
+import {Button, Card, CardBody, CardHeader, Link, Spacer} from "@nextui-org/react";
 
 const sine = (x) => (1 - Math.cos((x * Math.PI) / 2))
 const quad = (x) => x ** 2;
@@ -43,7 +44,7 @@ export default function Home() {
                 >
                     {
                         (progress) => (
-                            <div className="spacer flex flex-col justify-center w-full h-screen overflow-clip relative">
+                            <div className="spacer flex flex-col justify-center w-full h-screen overflow-clip relative z-10">
                                 <span className="px-16 md:px-24 lg:px-48 z-10">
                                     <h1>The Easiest Way to Schedule Group Meetings</h1>
                                 </span>
@@ -118,14 +119,113 @@ export default function Home() {
                         )
                     }
                 </Scene>
-                <Element name="content" className="w-full p-4 pt-20 max-w-screen-xl flex flex-col gap-4 mt-[-1200px]">
-                    <h2>Welcome!</h2>
-                    <h3>Its gonna say stuff here.</h3>
-                    <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Eros aliquet eros ligula fusce adipiscing mauris fames dis. Luctus rutrum aliquam nam neque, nulla rutrum sapien tristique. Fermentum quisque viverra aliquam volutpat pretium consectetur. Tellus primis facilisis ultricies laoreet himenaeos. Suscipit congue nec dignissim per dictum. Dictum sed molestie senectus convallis eu molestie. Imperdiet aliquam orci posuere dapibus phasellus; sed est justo pretium. Turpis enim torquent aenean massa vehicula litora finibus erat convallis. Consectetur semper ex facilisi maecenas nostra posuere.</p>
-                    <p>Vulputate lacus purus dignissim ipsum fringilla. Felis vulputate finibus ligula nunc suscipit et velit nisi. Scelerisque fusce eros quisque elementum tellus libero. Scelerisque duis bibendum ullamcorper nunc cubilia litora at sodales. Facilisis lobortis justo class pretium arcu magnis. Est ridiculus convallis, vitae donec mi sit nibh justo metus. Elementum senectus cras aliquam mauris proin imperdiet.</p>
-                    <p>Proin pharetra orci fusce parturient vulputate, nullam magnis praesent. Nunc turpis elementum proin; facilisi ultricies hendrerit nisi montes. Himenaeos inceptos montes metus fusce ac tellus nullam sagittis. Nibh hendrerit enim lorem neque est donec posuere primis duis. Eget massa semper imperdiet aliquam tincidunt. Felis imperdiet sodales hac ipsum mus magnis platea vestibulum. Nostra magnis porttitor iaculis fringilla dui mattis neque gravida ac.</p>
-                    <p>Non vehicula consectetur rutrum convallis; vehicula eu? Primis auctor ligula volutpat viverra netus. Donec enim litora eros nascetur donec himenaeos facilisis nisl eleifend. Dolor tellus amet etiam; fermentum habitasse taciti. Augue nascetur fusce netus urna tincidunt ad non curae sociosqu. Sapien mauris bibendum dapibus turpis varius odio senectus egestas. Ultrices turpis blandit dolor vel litora.</p>
-                    <p>Class finibus dis maximus congue; posuere fames luctus. Elementum dignissim adipiscing eget; curabitur posuere eget. Habitasse mauris hendrerit elit; dapibus mi tempus. Interdum id urna enim ipsum mus dui. Quam nibh sed dolor elit lobortis tellus non. Congue diam sagittis nisl dapibus scelerisque curae lobortis. Ante venenatis dui pulvinar senectus diam consequat mauris rhoncus. Fringilla dignissim condimentum nibh; molestie suscipit tempor augue.</p>
+                <Element name="content" className="w-full p-8 max-w-screen-xl flex flex-col mt-[-1200px] z-0">
+                    <section className="min-h-screen flex flex-col justify-center py-16">
+                        <h2 className="text-6xl font-bold text-center text-foreground mb-6">Welcome to HuddleHub</h2>
+                        <h3 className="text-3xl text-center text-default-400 mb-16">Effortless Group Scheduling, Massive
+                            Time Savings</h3>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <Card className="bg-default-900">
+                                <CardBody className="p-8">
+                                    <div className="flex flex-col sm:flex-row sm:items-center md:flex-col md:items-start lg:flex-row lg:items-center gap-6">
+                                        <IoMdTime className="text-primary text-6xl"/>
+                                        <div>
+                                            <h4 className="text-2xl font-semibold text-foreground mb-2">Save Precious
+                                                Time</h4>
+                                            <p className="text-default-400 text-lg">No more back-and-forth emails.
+                                                Schedule meetings in minutes, not days.</p>
+                                        </div>
+                                    </div>
+                                </CardBody>
+                            </Card>
+
+                            <Card className="bg-default-900">
+                                <CardBody className="p-8">
+                                    <div className="flex flex-col sm:flex-row sm:items-center md:flex-col md:items-start lg:flex-row lg:items-center gap-6">
+                                        <IoMdCalendar className="text-primary text-6xl"/>
+                                        <div>
+                                            <h4 className="text-2xl font-semibold text-foreground mb-2">Recurring
+                                                Meetings Made Easy</h4>
+                                            <p className="text-default-400 text-lg">Set up recurring schedules once and
+                                                forget about it. We&apos;ll handle the rest.</p>
+                                        </div>
+                                    </div>
+                                </CardBody>
+                            </Card>
+                        </div>
+
+                        <Spacer y={16} />
+
+                        <h3 className="text-4xl font-semibold text-center text-foreground mb-12">Features That Make Life
+                            Easier</h3>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                            <Card className="bg-default-800">
+                                <CardHeader className="pb-0 pt-6 px-6 flex-col items-start">
+                                    <IoMdPerson className="text-primary text-5xl mb-4"/>
+                                    <h4 className="font-bold text-2xl text-foreground">Smart Availability</h4>
+                                    <p className="text-default-400 mt-1">Save your regular schedule</p>
+                                </CardHeader>
+                                <CardBody className="overflow-visible py-6 px-6">
+                                    <p className="text-default-300 text-lg">Input your typical weekly availability once
+                                        and use it as a starting point for future meetings.</p>
+                                </CardBody>
+                            </Card>
+
+                            <Card className="bg-default-800">
+                                <CardHeader className="pb-0 pt-6 px-6 flex-col items-start">
+                                    <IoMdGlobe className="text-primary text-5xl mb-4"/>
+                                    <h4 className="font-bold text-2xl text-foreground">Time Zone Magic</h4>
+                                    <p className="text-default-400 mt-1">No more confusion</p>
+                                </CardHeader>
+                                <CardBody className="overflow-visible py-6 px-6">
+                                    <p className="text-default-300 text-lg">Automatically detect and adjust for
+                                        different time zones. Schedule across the globe with ease.</p>
+                                </CardBody>
+                            </Card>
+
+                            <Card className="bg-default-800">
+                                <CardHeader className="pb-0 pt-6 px-6 flex-col items-start">
+                                    <IoMdLink className="text-primary text-5xl mb-4"/>
+                                    <h4 className="font-bold text-2xl text-foreground">Integration Heaven</h4>
+                                    <p className="text-default-400 mt-1">Works with your tools</p>
+                                </CardHeader>
+                                <CardBody className="overflow-visible py-6 px-6">
+                                    <p className="text-default-300 text-lg">Seamlessly integrate with popular calendar
+                                        apps and video conferencing tools.</p>
+                                </CardBody>
+                            </Card>
+                        </div>
+                    </section>
+                    <section className="min-h-screen flex flex-col justify-center items-center py-16">
+                        <h3 className="text-4xl font-semibold text-foreground">Ready to Revolutionize Your
+                            Scheduling?</h3>
+
+                        <Spacer y={12}/>
+
+                        <Button as={Link} color="primary" size="lg" className="text-2xl px-12 py-8"
+                                endContent={<IoMdRocket className="text-3xl"/>} href={'/signup'}
+                        >
+                            Get Started for Free
+                        </Button>
+
+                        <Spacer y={12}/>
+
+                        <Card className="bg-default-800 w-full max-w-4xl">
+                            <CardBody className="p-12">
+                                <div className="flex flex-col md:flex-row items-center justify-between">
+                                    <div className="mb-8 md:mb-0 md:mr-8">
+                                        <h4 className="text-3xl font-semibold mb-4 text-foreground">Boost Your
+                                            Productivity</h4>
+                                        <p className="text-default-400 text-xl">Join thousands of teams saving time and
+                                            increasing efficiency with ScheduleSync.</p>
+                                    </div>
+                                    <IoMdRocket className="text-primary text-8xl"/>
+                                </div>
+                            </CardBody>
+                        </Card>
+                    </section>
                 </Element>
             </main>
         </Controller>
