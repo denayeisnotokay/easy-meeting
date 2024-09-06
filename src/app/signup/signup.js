@@ -95,10 +95,6 @@ export default function SignUp() {
     });
 
     const [ show, setShow ] = useState([false, false]);
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const [ content, setContent ] = useState({ title: '', body: '', error: false });
-
-    const router = useRouter();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -210,21 +206,5 @@ export default function SignUp() {
                 <Button type="submit" color="primary" variant="ghost" className="w-min data-[hover=true]:opacity-100" disableRipple>Sign Up</Button>
             </div>
         </form>
-        <Modal size="xl" isDismissable={false} isOpen={isOpen} onOpenChange={onOpenChange}>
-            <ModalContent>
-                {(onClose) => (
-                    <>
-                        <ModalHeader className="flex flex-col gap-1">{content.title}</ModalHeader>
-                        <ModalBody>
-                            <p>{content.body}</p>
-                        </ModalBody>
-                        <ModalFooter>
-                            {!content.error && <Button color="primary" variant="light" onPress={onClose}>Resend</Button>}
-                            <UButton onPress={onClose}>{content.error ? 'OK' : 'Done'}</UButton>
-                        </ModalFooter>
-                    </>
-                )}
-            </ModalContent>
-        </Modal>
     </>;
 }

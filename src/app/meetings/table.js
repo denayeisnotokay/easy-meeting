@@ -155,7 +155,7 @@ export default function MeetingTable() {
         }
 
         return filteredMeetings;
-    }, [meetings, filterValue, statusFilter, hasSearchFilter]);
+    }, [filterValue, statusFilter, hasSearchFilter]);
 
     const items = useMemo(() => {
         const start = (page - 1) * rowsPerPage;
@@ -387,7 +387,7 @@ export default function MeetingTable() {
         visibleColumns,
         onSearchChange,
         onRowsPerPageChange,
-        meetings.length,
+        rowsPerPage
     ]);
 
     const bottomContent = useMemo(() => {
