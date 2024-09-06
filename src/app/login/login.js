@@ -4,7 +4,6 @@ import { useReducer, useState } from "react";
 import { produce } from "immer";
 import { Button, Input, Link } from "@nextui-org/react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { useRouter, useSearchParams } from 'next/navigation';
 
 const SET_EMAIL = 0;
 const SET_PASSWORD = 1;
@@ -36,9 +35,6 @@ export default function LogIn() {
     });
 
     const [ show, setShow ] = useState(false);
-
-    const router = useRouter();
-    const query = useSearchParams();
 
     const handleSubmit = (event) => {
         event.preventDefault();
