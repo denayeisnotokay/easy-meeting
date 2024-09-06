@@ -120,7 +120,7 @@ export default function Home() {
                         )
                     }
                 </Scene>
-                <Element name="content" className="w-full p-8 max-w-screen-xl flex flex-col mt-[-1200px] z-0">
+                <Element name="content" className="w-full p-8 max-w-screen-xl flex flex-col z-0">
                     <section className="min-h-screen flex flex-col justify-center py-16">
                         <Scrollerr>
                             <h2 className="text-6xl font-bold text-center text-foreground mb-6">Welcome to HuddleHub</h2>
