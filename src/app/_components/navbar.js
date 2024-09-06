@@ -35,88 +35,88 @@ export default function Navbarr() {
                 className="lg:hidden"
             />
             <NavbarBrand>
-                <a href="/" className="h-full relative font-title text-3xl">HuddleHub</a>
+                <a href={`${process.env.PATH}/`} className="h-full relative font-title text-3xl">HuddleHub</a>
             </NavbarBrand>
         </NavbarContent>
         <NavbarContent justify="end">
             <NavbarItem className="hidden lg:flex" isActive={pathname === "/"}>
-                <Link href="/" className="text-default-foreground">
+                <Link href={`${process.env.PATH}/`} className="text-default-foreground">
                     Home
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === "/create"}>
-                <Link href="/create" className="text-default-foreground">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${process.env.PATH}/create`}>
+                <Link href={`${process.env.PATH}/create`} className="text-default-foreground">
                     Create Meeting
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === "/availability"}>
-                <Link href="/availability" className="text-default-foreground">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${process.env.PATH}/availability`}>
+                <Link href={`${process.env.PATH}/availability`} className="text-default-foreground">
                     My Availability
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === "/meetings"}>
-                <Link href="/meetings" className="text-default-foreground">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${process.env.PATH}/meetings`}>
+                <Link href={`${process.env.PATH}/meetings`} className="text-default-foreground">
                     My Meetings
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === "/login"}>
-                <Button as={Link} variant="light" color="primary" href="/login" className="text-md">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${process.env.PATH}/login`}>
+                <Button as={Link} variant="light" color="primary" href={`${process.env.PATH}/login`} className="text-md">
                     Log In
                 </Button>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === "/signup"}>
-                <Button as={Link} color="primary" href="/signup" className="text-md">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${process.env.PATH}/signup`}>
+                <Button as={Link} color="primary" href={`${process.env.PATH}/signup`} className="text-md">
                     Create Account
                 </Button>
             </NavbarItem>
         </NavbarContent>
         <NavbarMenu motionProps={{animate: { height: isMenuOpen ? '100vh' : '0' }}}>
-            <NavbarMenuItem isActive={pathname === "/"}>
+            <NavbarMenuItem isActive={pathname === `${process.env.PATH}/`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href="/"
+                    href={`${process.env.PATH}/`}
                 >
                     Home
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === "/create"}>
+            <NavbarMenuItem isActive={pathname === `${process.env.PATH}/create`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href="/create"
+                    href={`${process.env.PATH}/create`}
                 >
                     Create Meeting
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === "/availability"}>
+            <NavbarMenuItem isActive={pathname === `${process.env.PATH}/availability`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href="/availability"
+                    href={`${process.env.PATH}/availability`}
                 >
                     My Availability
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === "/meetings"}>
+            <NavbarMenuItem isActive={pathname === `${process.env.PATH}/meetings`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href="/meetings"
+                    href={`${process.env.PATH}/availability`}
                 >
                     My Meetings
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === "/login"}>
+            <NavbarMenuItem isActive={pathname === `${process.env.PATH}/login`}>
                 <Link
                     color="secondary"
                     className="w-full"
-                    href="/login"
+                    href={`${process.env.PATH}/login`}
                 >
                     Log In
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === "/signup"}>
+            <NavbarMenuItem isActive={pathname === `${process.env.PATH}/signup`}>
                 <Link
                     color="primary"
                     className="w-full"
-                    href="/signup"
+                    href={`${process.env.PATH}/signup`}
                 >
                     Create Account
                 </Link>
