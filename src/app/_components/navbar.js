@@ -24,7 +24,7 @@ export default function Navbarr() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const pathname = usePathname();
 
-    const loggedIn = false;
+    const loggedIn = true;
 
     return <Navbar isBlurred={false} isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}  maxWidth="full" classNames={{
         base: ['fixed', 'bg-transparent', 'font-heading'],
@@ -37,7 +37,7 @@ export default function Navbarr() {
                 className="sm:hidden"
             />
             <NavbarBrand>
-                <a href="/" className="h-full relative font-title text-3xl">EasyMeet</a>
+                <a href="/" className="h-full relative font-title text-3xl">HuddleHub</a>
             </NavbarBrand>
         </NavbarContent>
         <NavbarContent justify="end">

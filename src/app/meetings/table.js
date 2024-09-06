@@ -22,7 +22,7 @@ import {
 } from "@nextui-org/react";
 import { IoIosSearch, IoIosArrowDown, IoIosAdd, IoIosMore } from "react-icons/io";
 
-// Placeholder data with updated date and time format
+// Sample data for 50 meetings
 const meetings = [
     {
         id: 1,
@@ -30,11 +30,11 @@ const meetings = [
         description: "Weekly team synchronization meeting",
         dateWindow: {
             start: new Date("2024-09-10"),
-            end: new Date("2024-09-12")
+            end: new Date("2024-09-10")
         },
         timeWindow: {
             start: new Date("2000-01-01T09:00:00"),
-            end: new Date("2000-01-01T17:00:00")
+            end: new Date("2000-01-01T10:00:00")
         },
         responders: 5,
         coordinator: {name: "Alice Johnson", email: "alice@example.com", avatar: "https://i.pravatar.cc/150?u=alice"},
@@ -58,21 +58,51 @@ const meetings = [
     },
     {
         id: 3,
-        name: "Project Kickoff",
-        description: "Initiate new project with stakeholders",
+        name: "Client Presentation",
+        description: "Present project progress to the client",
         dateWindow: {
-            start: new Date("2024-09-15"),
-            end: new Date("2024-09-15")
+            start: new Date("2024-09-20"),
+            end: new Date("2024-09-20")
         },
         timeWindow: {
-            start: new Date("2000-01-01T10:00:00"),
-            end: new Date("2000-01-01T11:30:00")
+            start: new Date("2000-01-01T14:00:00"),
+            end: new Date("2000-01-01T15:30:00")
         },
-        responders: 8,
-        coordinator: {name: "Bob Smith", email: "bob@example.com", avatar: "https://i.pravatar.cc/150?u=bob"},
-        status: "scheduled",
+        responders: 6,
+        coordinator: {name: "Carol Davis", email: "carol@example.com", avatar: "https://i.pravatar.cc/150?u=carol"},
+        status: "active",
     },
 ];
+
+// Generate 47 more sample meetings
+for (let i = 4; i <= 50; i++) {
+    const startDate = new Date(2024, 8, Math.floor(Math.random() * 30) + 1); // Random date in September 2024
+    const endDate = new Date(startDate);
+
+    const startTime = new Date(2000, 0, 1, Math.floor(Math.random() * 24), Math.floor(Math.random() * 60));
+    const endTime = new Date(startTime.getTime() + (Math.random() * 2 + 0.5) * 60 * 60 * 1000); // 0.5 to 2.5 hours later
+
+    meetings.push({
+        id: i,
+        name: `Meeting ${i}`,
+        description: `Description for Meeting ${i}`,
+        dateWindow: {
+            start: startDate,
+            end: endDate
+        },
+        timeWindow: {
+            start: startTime,
+            end: endTime
+        },
+        responders: Math.floor(Math.random() * 10) + 1, // 1 to 10 responders
+        coordinator: {
+            name: `Coordinator ${i}`,
+            email: `coordinator${i}@example.com`,
+            avatar: `https://i.pravatar.cc/150?u=coordinator${i}`
+        },
+        status: ['active', 'scheduled', 'past'][Math.floor(Math.random() * 3)] // Randomly assign status
+    });
+}
 
 const columns = [
     {name: "NAME", uid: "name"},
@@ -195,7 +225,7 @@ export default function MeetingTable() {
             case "actions":
                 return (
                     <div className="relative flex justify-end items-center gap-2">
-                        <Dropdown className="bg-background border-1 border-default-200">
+                        <Dropdown className="bg-background">
                             <DropdownTrigger>
                                 <Button isIconOnly radius="full" size="sm" variant="light">
                                     <IoIosMore className="text-default-400" />
@@ -204,7 +234,7 @@ export default function MeetingTable() {
                             <DropdownMenu>
                                 <DropdownItem>View</DropdownItem>
                                 <DropdownItem>Edit</DropdownItem>
-                                <DropdownItem>Delete</DropdownItem>
+                                <DropdownItem color="danger" className="text-danger">Delete</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                     </div>
@@ -367,6 +397,7 @@ export default function MeetingTable() {
                     showControls
                     classNames={{
                         cursor: "bg-primary text-primary-foreground",
+                        item: "data-[hover=true]:bg-default-700"
                     }}
                     color="primary"
                     isDisabled={hasSearchFilter}

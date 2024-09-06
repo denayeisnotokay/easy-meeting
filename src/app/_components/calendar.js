@@ -150,7 +150,7 @@ export default function Calendarr({ dates, times, zone }) {
             <ul className="flex flex-row gap-2">
                 <Button className="gap-2 pl-5" size="lg" color="success" variant={state.selected === 1 ? 'solid' : 'light'} onClick={() => dispatch({type: SET_SELECTED, value: 1})} startContent={<IoMdCheckmarkCircleOutline size={24} />}><span className={'h-[1.625rem]'}>Available</span></Button>
                 <Button className="gap-2 pl-5" size="lg" color="danger" variant={state.selected === -1 ? 'solid' : 'light'} onClick={() => dispatch({type: SET_SELECTED, value: -1})} startContent={<IoMdCloseCircleOutline size={24} />}><span className={'h-[1.625rem]'}>Unavailable</span></Button>
-                <Button className="gap-2 pl-5" size="lg" color="primary" variant={state.selected === 0 ? 'solid' : 'light'} onClick={() => dispatch({type: SET_SELECTED, value: 0})} startContent={<IoMdContrast size={24} />}><span className={'h-[1.625rem]'}>Auto</span></Button>
+                <Button className="gap-2 pl-5" size="lg" color="secondary" variant={state.selected === 0 ? 'solid' : 'light'} onClick={() => dispatch({type: SET_SELECTED, value: 0})} startContent={<IoMdContrast size={24} />}><span className={'h-[1.625rem]'}>Auto</span></Button>
             </ul>
             <div
                 className="grid items-start justify-center text-center w-full max-w-screen-lg"
@@ -200,6 +200,7 @@ export default function Calendarr({ dates, times, zone }) {
                             }>
                                 {Array.from({length: 4}, (_, i) => (
                                     <span
+                                        key={i}
                                         className={
                                             'grow' +
                                             (
