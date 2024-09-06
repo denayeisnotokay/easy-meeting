@@ -26,45 +26,45 @@ export default function Navbarr() {
 
     return <Navbar isBlurred={false} isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}  maxWidth="full" classNames={{
         base: ['fixed', 'bg-transparent', 'font-heading'],
-        menu: ['fixed', 'inset-0', 'pt-16', 'px-0', 'gap-0'],
+        menu: ['fixed', 'inset-x-0', 'top-0', 'pt-16', 'px-0', 'gap-0'],
         menuItem: ['transition-colors', 'hover:bg-default-800', 'px-6', 'py-2'],
     }}>
         <NavbarContent>
             <NavbarMenuToggle
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                className="sm:hidden"
+                className="lg:hidden"
             />
             <NavbarBrand>
                 <a href="/" className="h-full relative font-title text-3xl">HuddleHub</a>
             </NavbarBrand>
         </NavbarContent>
         <NavbarContent justify="end">
-            <NavbarItem className="hidden sm:flex" isActive={pathname === "/"}>
+            <NavbarItem className="hidden lg:flex" isActive={pathname === "/"}>
                 <Link href="/" className="text-default-foreground">
                     Home
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden sm:flex" isActive={pathname === "/create"}>
+            <NavbarItem className="hidden lg:flex" isActive={pathname === "/create"}>
                 <Link href="/create" className="text-default-foreground">
                     Create Meeting
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden sm:flex" isActive={pathname === "/availability"}>
+            <NavbarItem className="hidden lg:flex" isActive={pathname === "/availability"}>
                 <Link href="/availability" className="text-default-foreground">
                     My Availability
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden sm:flex" isActive={pathname === "/meetings"}>
+            <NavbarItem className="hidden lg:flex" isActive={pathname === "/meetings"}>
                 <Link href="/meetings" className="text-default-foreground">
                     My Meetings
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden sm:flex" isActive={pathname === "/login"}>
+            <NavbarItem className="hidden lg:flex" isActive={pathname === "/login"}>
                 <Button as={Link} variant="light" color="primary" href="/login" className="text-md">
                     Log In
                 </Button>
             </NavbarItem>
-            <NavbarItem className="hidden sm:flex" isActive={pathname === "/signup"}>
+            <NavbarItem className="hidden lg:flex" isActive={pathname === "/signup"}>
                 <Button as={Link} color="primary" href="/signup" className="text-md">
                     Create Account
                 </Button>
