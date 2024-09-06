@@ -5,6 +5,7 @@ import { Element, scroller } from "react-scroll";
 import { useEffect } from "react";
 import {IoMdArrowDown, IoMdCalendar, IoMdGlobe, IoMdLink, IoMdPerson, IoMdRocket, IoMdTime} from "react-icons/io";
 import {Button, Card, CardBody, CardHeader, Link, Spacer} from "@nextui-org/react";
+import Scrollerr from "@/app/_components/scroll";
 
 const sine = (x) => (1 - Math.cos((x * Math.PI) / 2))
 const quad = (x) => x ** 2;
@@ -121,110 +122,135 @@ export default function Home() {
                 </Scene>
                 <Element name="content" className="w-full p-8 max-w-screen-xl flex flex-col mt-[-1200px] z-0">
                     <section className="min-h-screen flex flex-col justify-center py-16">
-                        <h2 className="text-6xl font-bold text-center text-foreground mb-6">Welcome to HuddleHub</h2>
-                        <h3 className="text-3xl text-center text-default-400 mb-16">Effortless Group Scheduling, Massive
-                            Time Savings</h3>
+                        <Scrollerr>
+                            <h2 className="text-6xl font-bold text-center text-foreground mb-6">Welcome to HuddleHub</h2>
+                        </Scrollerr>
+                        <Scrollerr>
+                            <h3 className="text-3xl text-center text-default-400 mb-16">
+                                Effortless Group Scheduling, Massive Time Savings
+                            </h3>
+                        </Scrollerr>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                            <Card className="bg-default-900">
-                                <CardBody className="p-8">
-                                    <div className="flex flex-col sm:flex-row sm:items-center md:flex-col md:items-start lg:flex-row lg:items-center gap-6">
-                                        <IoMdTime className="text-primary text-6xl"/>
-                                        <div>
-                                            <h4 className="text-2xl font-semibold text-foreground mb-2">Save Precious
-                                                Time</h4>
-                                            <p className="text-default-400 text-lg">No more back-and-forth emails.
-                                                Schedule meetings in minutes, not days.</p>
+                            <Scrollerr>
+                                <Card className="bg-default-900">
+                                    <CardBody className="p-8">
+                                        <div className="flex flex-col sm:flex-row sm:items-center md:flex-col md:items-start lg:flex-row lg:items-center gap-6">
+                                            <IoMdTime className="text-primary text-6xl"/>
+                                            <div>
+                                                <h4 className="text-2xl font-semibold text-foreground mb-2">Save Precious
+                                                    Time</h4>
+                                                <p className="text-default-400 text-lg">No more back-and-forth emails.
+                                                    Schedule meetings in minutes, not days.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </CardBody>
-                            </Card>
+                                    </CardBody>
+                                </Card>
+                            </Scrollerr>
 
-                            <Card className="bg-default-900">
-                                <CardBody className="p-8">
-                                    <div className="flex flex-col sm:flex-row sm:items-center md:flex-col md:items-start lg:flex-row lg:items-center gap-6">
-                                        <IoMdCalendar className="text-primary text-6xl"/>
-                                        <div>
-                                            <h4 className="text-2xl font-semibold text-foreground mb-2">Recurring
-                                                Meetings Made Easy</h4>
-                                            <p className="text-default-400 text-lg">Set up recurring schedules once and
-                                                forget about it. We&apos;ll handle the rest.</p>
+                            <Scrollerr>
+                                <Card className="bg-default-900">
+                                    <CardBody className="p-8">
+                                        <div className="flex flex-col sm:flex-row sm:items-center md:flex-col md:items-start lg:flex-row lg:items-center gap-6">
+                                            <IoMdCalendar className="text-primary text-6xl"/>
+                                            <div>
+                                                <h4 className="text-2xl font-semibold text-foreground mb-2">Recurring
+                                                    Meetings Made Easy</h4>
+                                                <p className="text-default-400 text-lg">Set up recurring schedules once and
+                                                    forget about it. We&apos;ll handle the rest.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </CardBody>
-                            </Card>
+                                    </CardBody>
+                                </Card>
+                            </Scrollerr>
                         </div>
 
                         <Spacer y={16} />
 
-                        <h3 className="text-4xl font-semibold text-center text-foreground mb-12">Features That Make Life
-                            Easier</h3>
+                        <Scrollerr>
+                            <h3 className="text-4xl font-semibold text-center text-foreground mb-12">
+                                Features That Make Life Easier
+                            </h3>
+                        </Scrollerr>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                            <Card className="bg-default-800">
-                                <CardHeader className="pb-0 pt-6 px-6 flex-col items-start">
-                                    <IoMdPerson className="text-primary text-5xl mb-4"/>
-                                    <h4 className="font-bold text-2xl text-foreground">Smart Availability</h4>
-                                    <p className="text-default-400 mt-1">Save your regular schedule</p>
-                                </CardHeader>
-                                <CardBody className="overflow-visible py-6 px-6">
-                                    <p className="text-default-300 text-lg">Input your typical weekly availability once
-                                        and use it as a starting point for future meetings.</p>
-                                </CardBody>
-                            </Card>
+                            <Scrollerr>
+                                <Card className="bg-default-800">
+                                    <CardHeader className="pb-0 pt-6 px-6 flex-col items-start">
+                                        <IoMdPerson className="text-primary text-5xl mb-4"/>
+                                        <h4 className="font-bold text-2xl text-foreground">Smart Availability</h4>
+                                        <p className="text-default-400 mt-1">Save your regular schedule</p>
+                                    </CardHeader>
+                                    <CardBody className="overflow-visible py-6 px-6">
+                                        <p className="text-default-300 text-lg">Input your typical weekly availability once
+                                            and use it as a starting point for future meetings.</p>
+                                    </CardBody>
+                                </Card>
+                            </Scrollerr>
 
-                            <Card className="bg-default-800">
-                                <CardHeader className="pb-0 pt-6 px-6 flex-col items-start">
-                                    <IoMdGlobe className="text-primary text-5xl mb-4"/>
-                                    <h4 className="font-bold text-2xl text-foreground">Time Zone Magic</h4>
-                                    <p className="text-default-400 mt-1">No more confusion</p>
-                                </CardHeader>
-                                <CardBody className="overflow-visible py-6 px-6">
-                                    <p className="text-default-300 text-lg">Automatically detect and adjust for
-                                        different time zones. Schedule across the globe with ease.</p>
-                                </CardBody>
-                            </Card>
+                            <Scrollerr>
+                                <Card className="bg-default-800">
+                                    <CardHeader className="pb-0 pt-6 px-6 flex-col items-start">
+                                        <IoMdGlobe className="text-primary text-5xl mb-4"/>
+                                        <h4 className="font-bold text-2xl text-foreground">Time Zone Magic</h4>
+                                        <p className="text-default-400 mt-1">No more confusion</p>
+                                    </CardHeader>
+                                    <CardBody className="overflow-visible py-6 px-6">
+                                        <p className="text-default-300 text-lg">Automatically detect and adjust for
+                                            different time zones. Schedule across the globe with ease.</p>
+                                    </CardBody>
+                                </Card>
+                            </Scrollerr>
 
-                            <Card className="bg-default-800">
-                                <CardHeader className="pb-0 pt-6 px-6 flex-col items-start">
-                                    <IoMdLink className="text-primary text-5xl mb-4"/>
-                                    <h4 className="font-bold text-2xl text-foreground">Integration Heaven</h4>
-                                    <p className="text-default-400 mt-1">Works with your tools</p>
-                                </CardHeader>
-                                <CardBody className="overflow-visible py-6 px-6">
-                                    <p className="text-default-300 text-lg">Seamlessly integrate with popular calendar
-                                        apps and video conferencing tools.</p>
-                                </CardBody>
-                            </Card>
+                            <Scrollerr>
+                                <Card className="bg-default-800">
+                                    <CardHeader className="pb-0 pt-6 px-6 flex-col items-start">
+                                        <IoMdLink className="text-primary text-5xl mb-4"/>
+                                        <h4 className="font-bold text-2xl text-foreground">Integration Heaven</h4>
+                                        <p className="text-default-400 mt-1">Works with your tools</p>
+                                    </CardHeader>
+                                    <CardBody className="overflow-visible py-6 px-6">
+                                        <p className="text-default-300 text-lg">Seamlessly integrate with popular calendar
+                                            apps and video conferencing tools.</p>
+                                    </CardBody>
+                                </Card>
+                            </Scrollerr>
                         </div>
                     </section>
                     <section className="min-h-screen flex flex-col justify-center items-center py-16">
-                        <h3 className="text-4xl font-semibold text-foreground">Ready to Revolutionize Your
-                            Scheduling?</h3>
+                        <Scrollerr>
+                            <h3 className="text-4xl font-semibold text-foreground">
+                                Ready to Revolutionize Your Scheduling?
+                            </h3>
+                        </Scrollerr>
 
                         <Spacer y={12}/>
 
-                        <Button as={Link} color="primary" size="lg" className="text-2xl px-12 py-8"
+                        <Scrollerr>
+                            <Button as={Link} color="primary" size="lg" className="text-2xl px-12 py-8"
                                 endContent={<IoMdRocket className="text-3xl"/>} href={'/signup'}
-                        >
-                            Get Started for Free
-                        </Button>
+                            >
+                                Get Started for Free
+                            </Button>
+                        </Scrollerr>
 
                         <Spacer y={12}/>
 
-                        <Card className="bg-default-800 w-full max-w-4xl">
-                            <CardBody className="p-12">
-                                <div className="flex flex-col md:flex-row items-center justify-between">
-                                    <div className="mb-8 md:mb-0 md:mr-8">
-                                        <h4 className="text-3xl font-semibold mb-4 text-foreground">Boost Your
-                                            Productivity</h4>
-                                        <p className="text-default-400 text-xl">Join thousands of teams saving time and
-                                            increasing efficiency with ScheduleSync.</p>
+                        <Scrollerr>
+                            <Card className="bg-default-800 w-full max-w-4xl">
+                                <CardBody className="p-12">
+                                    <div className="flex flex-col md:flex-row items-center justify-between">
+                                        <div className="mb-8 md:mb-0 md:mr-8">
+                                            <h4 className="text-3xl font-semibold mb-4 text-foreground">Boost Your
+                                                Productivity</h4>
+                                            <p className="text-default-400 text-xl">Join thousands of teams saving time and
+                                                increasing efficiency with ScheduleSync.</p>
+                                        </div>
+                                        <IoMdRocket className="text-primary text-8xl"/>
                                     </div>
-                                    <IoMdRocket className="text-primary text-8xl"/>
-                                </div>
-                            </CardBody>
-                        </Card>
+                                </CardBody>
+                            </Card>
+                        </Scrollerr>
                     </section>
                 </Element>
             </main>

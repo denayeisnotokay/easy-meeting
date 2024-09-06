@@ -25,7 +25,7 @@ const sarabun = Sarabun({
 })
 
 export const metadata = {
-    title: "EasyMeet",
+    title: "HuddleHub",
     description: ":3",
 };
 
