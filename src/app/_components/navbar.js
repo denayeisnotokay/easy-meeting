@@ -3,10 +3,6 @@
 import {
     Button,
     Link,
-    Dropdown,
-    DropdownItem,
-    DropdownMenu,
-    DropdownTrigger,
     Navbar,
     NavbarBrand,
     NavbarContent,
@@ -17,9 +13,8 @@ import {
 } from '@nextui-org/react'
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import {IoIosArrowDown, IoMdPerson} from "react-icons/io";
 
-const pathname = '/easy-meeting'
+const gitRepo = '/easy-meeting'
 
 export default function Navbarr() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,88 +32,88 @@ export default function Navbarr() {
                 className="lg:hidden"
             />
             <NavbarBrand>
-                <a href={`${pathname}/`} className="h-full relative font-title text-3xl">HuddleHub</a>
+                <a href={`${gitRepo}/`} className="h-full relative font-title text-3xl">HuddleHub</a>
             </NavbarBrand>
         </NavbarContent>
         <NavbarContent justify="end">
             <NavbarItem className="hidden lg:flex" isActive={pathname === "/"}>
-                <Link href={`${pathname}/`} className="text-default-foreground">
+                <Link href={`${gitRepo}/`} className="text-default-foreground">
                     Home
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === `${pathname}/create`}>
-                <Link href={`${pathname}/create`} className="text-default-foreground">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${gitRepo}/create`}>
+                <Link href={`${gitRepo}/create`} className="text-default-foreground">
                     Create Meeting
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === `${pathname}/availability`}>
-                <Link href={`${pathname}/availability`} className="text-default-foreground">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${gitRepo}/availability`}>
+                <Link href={`${gitRepo}/availability`} className="text-default-foreground">
                     My Availability
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === `${pathname}/meetings`}>
-                <Link href={`${pathname}/meetings`} className="text-default-foreground">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${gitRepo}/meetings`}>
+                <Link href={`${gitRepo}/meetings`} className="text-default-foreground">
                     My Meetings
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === `${pathname}/login`}>
-                <Button as={Link} variant="light" color="primary" href={`${pathname}/login`} className="text-md">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${gitRepo}/login`}>
+                <Button as={Link} variant="light" color="primary" href={`${gitRepo}/login`} className="text-md">
                     Log In
                 </Button>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === `${pathname}/signup`}>
-                <Button as={Link} color="primary" href={`${pathname}/signup`} className="text-md">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${gitRepo}/signup`}>
+                <Button as={Link} color="primary" href={`${gitRepo}/signup`} className="text-md">
                     Create Account
                 </Button>
             </NavbarItem>
         </NavbarContent>
         <NavbarMenu motionProps={{animate: { height: isMenuOpen ? '100vh' : '0' }}}>
-            <NavbarMenuItem isActive={pathname === `${pathname}/`}>
+            <NavbarMenuItem isActive={pathname === `${gitRepo}/`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href={`${pathname}/`}
+                    href={`${gitRepo}/`}
                 >
                     Home
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === `${pathname}/create`}>
+            <NavbarMenuItem isActive={pathname === `${gitRepo}/create`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href={`${pathname}/create`}
+                    href={`${gitRepo}/create`}
                 >
                     Create Meeting
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === `${pathname}/availability`}>
+            <NavbarMenuItem isActive={pathname === `${gitRepo}/availability`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href={`${pathname}/availability`}
+                    href={`${gitRepo}/availability`}
                 >
                     My Availability
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === `${pathname}/meetings`}>
+            <NavbarMenuItem isActive={pathname === `${gitRepo}/meetings`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href={`${pathname}/availability`}
+                    href={`${gitRepo}/availability`}
                 >
                     My Meetings
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === `${pathname}/login`}>
+            <NavbarMenuItem isActive={pathname === `${gitRepo}/login`}>
                 <Link
                     color="secondary"
                     className="w-full"
-                    href={`${pathname}/login`}
+                    href={`${gitRepo}/login`}
                 >
                     Log In
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === `${pathname}/signup`}>
+            <NavbarMenuItem isActive={pathname === `${gitRepo}/signup`}>
                 <Link
                     color="primary"
                     className="w-full"
-                    href={`${pathname}/signup`}
+                    href={`${gitRepo}/signup`}
                 >
                     Create Account
                 </Link>
