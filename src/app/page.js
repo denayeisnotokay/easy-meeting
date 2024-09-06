@@ -228,7 +228,7 @@ export default function Home() {
 
                         <Scrollerr>
                             <Button as={Link} color="primary" size="lg" className="text-2xl px-12 py-8"
-                                endContent={<IoMdRocket className="text-3xl"/>} href={`${process.env.GIT_REPO_NAME}/signup`}
+                                endContent={<IoMdRocket className="text-3xl"/>} href={'/easy-meeting/signup'}
                             >
                                 Get Started for Free
                             </Button>

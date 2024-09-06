@@ -19,6 +19,8 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import {IoIosArrowDown, IoMdPerson} from "react-icons/io";
 
+const pathname = '/easy-meeting'
+
 export default function Navbarr() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -35,88 +37,88 @@ export default function Navbarr() {
                 className="lg:hidden"
             />
             <NavbarBrand>
-                <a href={`${process.env.GIT_REPO_NAME}/`} className="h-full relative font-title text-3xl">HuddleHub</a>
+                <a href={`${pathname}/`} className="h-full relative font-title text-3xl">HuddleHub</a>
             </NavbarBrand>
         </NavbarContent>
         <NavbarContent justify="end">
             <NavbarItem className="hidden lg:flex" isActive={pathname === "/"}>
-                <Link href={`${process.env.GIT_REPO_NAME}/`} className="text-default-foreground">
+                <Link href={`${pathname}/`} className="text-default-foreground">
                     Home
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === `${process.env.GIT_REPO_NAME}/create`}>
-                <Link href={`${process.env.GIT_REPO_NAME}/create`} className="text-default-foreground">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${pathname}/create`}>
+                <Link href={`${pathname}/create`} className="text-default-foreground">
                     Create Meeting
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === `${process.env.GIT_REPO_NAME}/availability`}>
-                <Link href={`${process.env.GIT_REPO_NAME}/availability`} className="text-default-foreground">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${pathname}/availability`}>
+                <Link href={`${pathname}/availability`} className="text-default-foreground">
                     My Availability
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === `${process.env.GIT_REPO_NAME}/meetings`}>
-                <Link href={`${process.env.GIT_REPO_NAME}/meetings`} className="text-default-foreground">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${pathname}/meetings`}>
+                <Link href={`${pathname}/meetings`} className="text-default-foreground">
                     My Meetings
                 </Link>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === `${process.env.GIT_REPO_NAME}/login`}>
-                <Button as={Link} variant="light" color="primary" href={`${process.env.GIT_REPO_NAME}/login`} className="text-md">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${pathname}/login`}>
+                <Button as={Link} variant="light" color="primary" href={`${pathname}/login`} className="text-md">
                     Log In
                 </Button>
             </NavbarItem>
-            <NavbarItem className="hidden lg:flex" isActive={pathname === `${process.env.GIT_REPO_NAME}/signup`}>
-                <Button as={Link} color="primary" href={`${process.env.GIT_REPO_NAME}/signup`} className="text-md">
+            <NavbarItem className="hidden lg:flex" isActive={pathname === `${pathname}/signup`}>
+                <Button as={Link} color="primary" href={`${pathname}/signup`} className="text-md">
                     Create Account
                 </Button>
             </NavbarItem>
         </NavbarContent>
         <NavbarMenu motionProps={{animate: { height: isMenuOpen ? '100vh' : '0' }}}>
-            <NavbarMenuItem isActive={pathname === `${process.env.GIT_REPO_NAME}/`}>
+            <NavbarMenuItem isActive={pathname === `${pathname}/`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href={`${process.env.GIT_REPO_NAME}/`}
+                    href={`${pathname}/`}
                 >
                     Home
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === `${process.env.GIT_REPO_NAME}/create`}>
+            <NavbarMenuItem isActive={pathname === `${pathname}/create`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href={`${process.env.GIT_REPO_NAME}/create`}
+                    href={`${pathname}/create`}
                 >
                     Create Meeting
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === `${process.env.GIT_REPO_NAME}/availability`}>
+            <NavbarMenuItem isActive={pathname === `${pathname}/availability`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href={`${process.env.GIT_REPO_NAME}/availability`}
+                    href={`${pathname}/availability`}
                 >
                     My Availability
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === `${process.env.GIT_REPO_NAME}/meetings`}>
+            <NavbarMenuItem isActive={pathname === `${pathname}/meetings`}>
                 <Link
                     className="w-full text-default-foreground"
-                    href={`${process.env.GIT_REPO_NAME}/availability`}
+                    href={`${pathname}/availability`}
                 >
                     My Meetings
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === `${process.env.GIT_REPO_NAME}/login`}>
+            <NavbarMenuItem isActive={pathname === `${pathname}/login`}>
                 <Link
                     color="secondary"
                     className="w-full"
-                    href={`${process.env.GIT_REPO_NAME}/login`}
+                    href={`${pathname}/login`}
                 >
                     Log In
                 </Link>
             </NavbarMenuItem>
-            <NavbarMenuItem isActive={pathname === `${process.env.GIT_REPO_NAME}/signup`}>
+            <NavbarMenuItem isActive={pathname === `${pathname}/signup`}>
                 <Link
                     color="primary"
                     className="w-full"
-                    href={`${process.env.GIT_REPO_NAME}/signup`}
+                    href={`${pathname}/signup`}
                 >
                     Create Account
                 </Link>
