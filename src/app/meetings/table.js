@@ -133,7 +133,7 @@ export default function MeetingTable() {
     const [selectedKeys, setSelectedKeys] = useState(new Set([]));
     const [visibleColumns, setVisibleColumns] = useState(new Set(INITIAL_VISIBLE_COLUMNS));
     const [statusFilter, setStatusFilter] = useState(new Set(["active", "scheduled", "past"]));
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState("5");
     const [sortDescriptor, setSortDescriptor] = useState({
         column: "name",
         direction: "ascending",
@@ -144,7 +144,7 @@ export default function MeetingTable() {
     const hasSearchFilter = Boolean(filterValue);
 
     const headerColumns = useMemo(() => {
-        if (visibleColumns.size === INITIAL_VISIBLE_COLUMNS.length) return columns;
+        if (visibleColumns.size === INITIAL_VISIBLE_COLUMNS.length + 1) return columns;
         return columns.filter((column) => Array.from(visibleColumns).includes(column.uid));
     }, [visibleColumns]);
 
@@ -199,8 +199,8 @@ export default function MeetingTable() {
     }, [filteredItems, sortDescriptor.column, sortDescriptor.direction]);
 
     const items = useMemo(() => {
-        const start = (page - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
+        const start = (page - 1) * parseInt(rowsPerPage);
+        const end = start + parseInt(rowsPerPage);
 
         return sortedItems.slice(start, end);
     }, [page, sortedItems, rowsPerPage]);
@@ -390,7 +390,7 @@ export default function MeetingTable() {
                                 ],
                             }}
                             size="sm"
-                            selectedKeys={[rowsPerPage.toString()]}
+                            selectedKeys={[rowsPerPage]}
                             onChange={onRowsPerPageChange}
                             allowMultipleSelection={false}
                         >
