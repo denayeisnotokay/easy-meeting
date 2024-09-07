@@ -107,7 +107,7 @@ for (let i = 4; i <= 50; i++) {
 const columns = [
     {name: "NAME", uid: "name", sortable: true},
     {name: "DESCRIPTION", uid: "description"},
-    {name: "DATE/TIME WINDOW", uid: "dateWindow", sortable: true},
+    {name: "DATE/TIME WINDOW", uid: "dateTimeWindow", sortable: true},
     {name: "RESPONDERS", uid: "responders", sortable: true},
     {name: "COORDINATOR", uid: "coordinator", sortable: true},
     {name: "STATUS", uid: "status", sortable: true},
@@ -161,39 +161,49 @@ export default function MeetingTable() {
         return filteredMeetings;
     }, [filterValue, statusFilter, hasSearchFilter]);
 
-    const items = useMemo(() => {
-        const start = (page - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
-
-        return filteredItems.slice(start, end);
-    }, [page, filteredItems, rowsPerPage]);
-
     const sortedItems = useMemo(() => {
-        return [...items].sort((a, b) => {
-            const first = a[sortDescriptor.column];
-            const second = b[sortDescriptor.column];
+        return [...filteredItems].sort((a, b) => {
+            let first;
+            let second;
             let cmp = 0;
             switch (sortDescriptor.column) {
                 case "name":
+                    first = a.name;
+                    second = b.name;
                     cmp = first.localeCompare(second)
                     break;
-                case "dateWindow":
-                    cmp = first.start < second.start ? -1 : first.start > second.start ? 1 : 0;
+                case "dateTimeWindow":
+                    first = a.dateWindow.start;
+                    second = b.dateWindow.start;
+                    cmp = first < second ? -1 : first > second ? 1 : 0;
                     break;
                 case "responders":
+                    first = a.responders;
+                    second = b.responders;
                     cmp = first - second;
                     break;
                 case "coordinator":
-                    cmp = first.name.localeCompare(second.name);
+                    first = a.coordinator.name;
+                    second = b.coordinator.name;
+                    cmp = first.localeCompare(second);
                     break;
                 case "status":
+                    first = a.status;
+                    second = b.status;
                     cmp = statusOrderMap[first] - statusOrderMap[second];
                     break;
             }
 
             return sortDescriptor.direction === "descending" ? -cmp : cmp;
         });
-    }, [items, sortDescriptor.column, sortDescriptor.direction]);
+    }, [filteredItems, sortDescriptor.column, sortDescriptor.direction]);
+
+    const items = useMemo(() => {
+        const start = (page - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+
+        return sortedItems.slice(start, end);
+    }, [page, sortedItems, rowsPerPage]);
 
     const renderCell = useCallback((meeting, columnKey) => {
         const cellValue = meeting[columnKey];
@@ -380,20 +390,20 @@ export default function MeetingTable() {
                                 ],
                             }}
                             size="sm"
-                            value={rowsPerPage}
+                            selectedKeys={[rowsPerPage.toString()]}
                             onChange={onRowsPerPageChange}
                             allowMultipleSelection={false}
                         >
-                            <SelectItem key={5} value={5}>
+                            <SelectItem key={5}>
                                 5
                             </SelectItem>
-                            <SelectItem key={10} value={10}>
+                            <SelectItem key={10}>
                                 10
                             </SelectItem>
-                            <SelectItem key={15} value={15}>
+                            <SelectItem key={15}>
                                 15
                             </SelectItem>
-                            <SelectItem key={25} value={25}>
+                            <SelectItem key={25}>
                                 25
                             </SelectItem>
                         </Select>
@@ -486,7 +496,7 @@ export default function MeetingTable() {
                     </TableColumn>
                 )}
             </TableHeader>
-            <TableBody emptyContent={"No meetings yet..."} items={sortedItems}>
+            <TableBody emptyContent={"No meetings yet..."} items={items}>
                 {(item) => (
                     <TableRow key={item.id}>
                         {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
