@@ -80,8 +80,8 @@ export default function LogIn() {
             />
             <div className="flex flex-col gap-6 items-center">
                 <div className="flex flex-col items-center">
-                    <Link href="/login" underline="always">Don&apos;t have an account</Link>
-                    <Link href="/recover" underline="always">Forgot password</Link>
+                    <Link href="/easy-meeting/login" underline="always">Don&apos;t have an account</Link>
+                    <Link href="/easy-meeting/recover" underline="always">Forgot password</Link>
                 </div>
                 <Button type="submit" color="primary" variant="ghost" className="w-min data-[hover=true]:opacity-100">Log In</Button>
             </div>

@@ -47,6 +47,9 @@ const reducer = ( state, action ) => {
             state.invalid.password.only = !action.value.match(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~A-Za-z0-9]+/);
             state.invalid.password.all = false;
             state.invalid.password.all = Object.values(state.invalid.password).some(Boolean);
+            if (!state.invalid.confirm) {
+                state.invalid.confirm = action.value !== state.password;
+            }
             break;
         case SET_CONFIRM:
             state.confirm = action.value;
@@ -202,7 +205,7 @@ export default function SignUp() {
                 </ul>
             </small>
             <div className="flex flex-col items-center gap-2">
-                <Link href="/login" color="primary" className="underline">Already have an account</Link>
+                <Link href="/easy-meeting/login" color="primary" className="underline">Already have an account</Link>
                 <Button type="submit" color="primary" variant="ghost" className="w-min data-[hover=true]:opacity-100" disableRipple>Sign Up</Button>
             </div>
         </form>
