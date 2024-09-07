@@ -107,7 +107,7 @@ for (let i = 4; i <= 50; i++) {
 const columns = [
     {name: "NAME", uid: "name", sortable: true},
     {name: "DESCRIPTION", uid: "description"},
-    {name: "DATE/TIME WINDOW", uid: "dateTimeWindow", sortable: true},
+    {name: "DATE/TIME WINDOW", uid: "dateWindow", sortable: true},
     {name: "RESPONDERS", uid: "responders", sortable: true},
     {name: "COORDINATOR", uid: "coordinator", sortable: true},
     {name: "STATUS", uid: "status", sortable: true},
@@ -177,7 +177,7 @@ export default function MeetingTable() {
                 case "name":
                     cmp = first.localeCompare(second)
                     break;
-                case "dateTimeWindow":
+                case "dateWindow":
                     cmp = first.start < second.start ? -1 : first.start > second.start ? 1 : 0;
                     break;
                 case "responders":
