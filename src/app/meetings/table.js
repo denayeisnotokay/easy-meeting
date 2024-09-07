@@ -105,12 +105,12 @@ for (let i = 4; i <= 50; i++) {
 }
 
 const columns = [
-    {name: "NAME", uid: "name"},
+    {name: "NAME", uid: "name", sortable: true},
     {name: "DESCRIPTION", uid: "description"},
-    {name: "DATE/TIME WINDOW", uid: "dateTimeWindow"},
-    {name: "RESPONDERS", uid: "responders"},
-    {name: "COORDINATOR", uid: "coordinator"},
-    {name: "STATUS", uid: "status"},
+    {name: "DATE/TIME WINDOW", uid: "dateTimeWindow", sortable: true},
+    {name: "RESPONDERS", uid: "responders", sortable: true},
+    {name: "COORDINATOR", uid: "coordinator", sortable: true},
+    {name: "STATUS", uid: "status", sortable: true},
     {name: "ACTIONS", uid: "actions"},
 ];
 
@@ -119,6 +119,12 @@ const statusColorMap = {
     scheduled: "primary",
     past: "default",
 };
+
+const statusOrderMap = {
+    active: 0,
+    scheduled: 1,
+    past: 2
+}
 
 const INITIAL_VISIBLE_COLUMNS = ["name", "dateTimeWindow", "responders", "coordinator", "status", "actions"];
 
@@ -166,7 +172,24 @@ export default function MeetingTable() {
         return [...items].sort((a, b) => {
             const first = a[sortDescriptor.column];
             const second = b[sortDescriptor.column];
-            const cmp = first < second ? -1 : first > second ? 1 : 0;
+            let cmp = 0;
+            switch (sortDescriptor.column) {
+                case "name":
+                    cmp = first.localeCompare(second)
+                    break;
+                case "dateTimeWindow":
+                    cmp = first.start < second.start ? -1 : first.start > second.start ? 1 : 0;
+                    break;
+                case "responders":
+                    cmp = first - second;
+                    break;
+                case "coordinator":
+                    cmp = first.name.localeCompare(second.name);
+                    break;
+                case "status":
+                    cmp = statusOrderMap[first] - statusOrderMap[second];
+                    break;
+            }
 
             return sortDescriptor.direction === "descending" ? -cmp : cmp;
         });
