@@ -126,7 +126,7 @@ export default function MeetingTable() {
     const [filterValue, setFilterValue] = useState("");
     const [selectedKeys, setSelectedKeys] = useState(new Set([]));
     const [visibleColumns, setVisibleColumns] = useState(new Set(INITIAL_VISIBLE_COLUMNS));
-    const [statusFilter, setStatusFilter] = useState("all");
+    const [statusFilter, setStatusFilter] = useState(new Set(["active", "scheduled", "past"]));
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [sortDescriptor, setSortDescriptor] = useState({
         column: "name",
@@ -138,7 +138,7 @@ export default function MeetingTable() {
     const hasSearchFilter = Boolean(filterValue);
 
     const headerColumns = useMemo(() => {
-        if (visibleColumns === "all") return columns;
+        if (visibleColumns.size === INITIAL_VISIBLE_COLUMNS.length) return columns;
         return columns.filter((column) => Array.from(visibleColumns).includes(column.uid));
     }, [visibleColumns]);
 
@@ -150,9 +150,7 @@ export default function MeetingTable() {
                 meeting.name.toLowerCase().includes(filterValue.toLowerCase()),
             );
         }
-        if (statusFilter !== "all") {
-            filteredMeetings = filteredMeetings.filter((meeting) => meeting.status === statusFilter);
-        }
+        filteredMeetings = filteredMeetings.filter((meeting) => statusFilter.has(meeting.status));
 
         return filteredMeetings;
     }, [filterValue, statusFilter, hasSearchFilter]);
@@ -172,7 +170,7 @@ export default function MeetingTable() {
 
             return sortDescriptor.direction === "descending" ? -cmp : cmp;
         });
-    }, [sortDescriptor, items]);
+    }, [items, sortDescriptor.column, sortDescriptor.direction]);
 
     const renderCell = useCallback((meeting, columnKey) => {
         const cellValue = meeting[columnKey];
@@ -304,7 +302,6 @@ export default function MeetingTable() {
                                 selectionMode="multiple"
                                 onSelectionChange={setStatusFilter}
                             >
-                                <DropdownItem key="all">All</DropdownItem>
                                 <DropdownItem key="active">Active</DropdownItem>
                                 <DropdownItem key="scheduled">Scheduled</DropdownItem>
                                 <DropdownItem key="past">Past</DropdownItem>

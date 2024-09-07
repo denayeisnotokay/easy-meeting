@@ -51,7 +51,10 @@ export default function Create() {
         name: '',
         description: '',
         invalid: {
-            times: false,
+            times: {
+                start: false,
+                end: false
+            },
             name: false
         }
     });

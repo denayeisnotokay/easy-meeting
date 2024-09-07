@@ -3,7 +3,7 @@
 import { getDayOfWeek, parseDate, parseTime } from '@internationalized/date';
 import { useEffect, useReducer } from 'react';
 import { produce } from "immer";
-import { Button } from "@nextui-org/react";
+import {Button, Tooltip} from "@nextui-org/react";
 import { IoMdCheckmarkCircleOutline, IoMdCloseCircleOutline, IoMdContrast } from "react-icons/io";
 
 const SET_DAYS = 0;
@@ -148,9 +148,15 @@ export default function Calendarr({ dates, times, zone }) {
         <div className="flex flex-col items-center gap-2 w-full">
             Make selections:
             <ul className="flex flex-row gap-2">
-                <Button className="gap-2 pl-5" size="lg" color="success" variant={state.selected === 1 ? 'solid' : 'light'} onClick={() => dispatch({type: SET_SELECTED, value: 1})} startContent={<IoMdCheckmarkCircleOutline size={24} />}><span className={'h-[1.625rem]'}>Available</span></Button>
-                <Button className="gap-2 pl-5" size="lg" color="danger" variant={state.selected === -1 ? 'solid' : 'light'} onClick={() => dispatch({type: SET_SELECTED, value: -1})} startContent={<IoMdCloseCircleOutline size={24} />}><span className={'h-[1.625rem]'}>Unavailable</span></Button>
-                <Button className="gap-2 pl-5" size="lg" color="secondary" variant={state.selected === 0 ? 'solid' : 'light'} onClick={() => dispatch({type: SET_SELECTED, value: 0})} startContent={<IoMdContrast size={24} />}><span className={'h-[1.625rem]'}>Auto</span></Button>
+                <Tooltip content="Add availability in the selected area.">
+                    <Button className="gap-2 pl-5" size="lg" color="success" variant={state.selected === 1 ? 'solid' : 'light'} onClick={() => dispatch({type: SET_SELECTED, value: 1})} startContent={<IoMdCheckmarkCircleOutline size={24} />}><span className={'h-[1.625rem]'}>Available</span></Button>
+                </Tooltip>
+                <Tooltip content="Erase availability in the selected area.">
+                    <Button className="gap-2 pl-5" size="lg" color="danger" variant={state.selected === -1 ? 'solid' : 'light'} onClick={() => dispatch({type: SET_SELECTED, value: -1})} startContent={<IoMdCloseCircleOutline size={24} />}><span className={'h-[1.625rem]'}>Unavailable</span></Button>
+                </Tooltip>
+                <Tooltip content="Erase availability if the selection started on an available time, add availability if the selection started on an unavailable time.">
+                    <Button className="gap-2 pl-5" size="lg" color="secondary" variant={state.selected === 0 ? 'solid' : 'light'} onClick={() => dispatch({type: SET_SELECTED, value: 0})} startContent={<IoMdContrast size={24} />}><span className={'h-[1.625rem]'}>Auto</span></Button>
+                </Tooltip>
             </ul>
             <div
                 className="grid items-start justify-center text-center w-full max-w-screen-lg"
