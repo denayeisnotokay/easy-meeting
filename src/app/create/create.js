@@ -19,11 +19,11 @@ const reducer = (state, action) => {
             break;
         case SET_TIME_START:
             state.times.start = action.value;
-            state.invalid.times = state.times.start.compare(state.times.end) > 0;
+            state.invalid.times = state.times.start >= state.times.end;
             break;
         case SET_TIME_END:
             state.times.end = action.value;
-            state.invalid.times = state.times.start.compare(state.times.end) > 0;
+            state.invalid.times = state.times.start >= state.times.end;
             break;
         case SET_NAME:
             state.name = action.value;
@@ -51,10 +51,7 @@ export default function Create() {
         name: '',
         description: '',
         invalid: {
-            times: {
-                start: false,
-                end: false
-            },
+            times: false,
             name: false
         }
     });
